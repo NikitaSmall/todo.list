@@ -1,2 +1,2 @@
 # todo.list
-Very basic todo list with bootle
+Very basic todo list with bottle
