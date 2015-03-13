@@ -32,9 +32,13 @@
           <tr>
             <td>{{row[0]}}</td>
               <td>{{row[1]}}</td>
+              <td class="text-right"><a href="/edit/{{row[0]}}" class="btn btn-info">Редактировать</a></td>
           </tr>
         %end
         </table>
+
+        <br />
+        <a href="/new" class="btn btn-primary">Новая задача!</a>
     </div>
   </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

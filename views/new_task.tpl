@@ -24,8 +24,9 @@
         <form action="/new" method="GET">
             <div class="form-group">
                 <input type="text" size="255" maxlength="255" name="task" class="form-control">
-                <input type="submit" name="save" value="Сохранить!" class="btn btn-default">
+
             </div>
+            <input type="submit" name="save" value="Сохранить!" class="btn btn-default">
         </form>
     </div>
   </div>

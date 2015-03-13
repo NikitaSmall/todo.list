@@ -32,7 +32,7 @@
                     <option value="0">Закрыто</option>
                 </select>
             </div>
-            <input type="submit" name="save" value="Сохранить!" class="btn btn-default">
+            <input type="submit" name="save" value="Изменить!" class="btn btn-default">
         </form>
     </div>
   </div>
