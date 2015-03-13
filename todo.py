@@ -3,7 +3,7 @@ from sqlite3 import sqlite_version
 __author__ = 'nikitasmall'
 
 import sqlite3
-from bottle import route, run, debug, template, static_file, view, request, redirect
+from bottle import route, run, debug, template, static_file, view, request, redirect, error
 
 
 @route('/js/:filename')
@@ -83,6 +83,14 @@ def edit_item(no):
         data = c.fetchone()
 
         return template('edit_task.tpl', data=data, no=no)
+
+@error(403)
+def mistake(code):
+    return 'something bad happened! go to <a href="/todo">main page</a>'
+
+@error(404)
+def mistake(code):
+    return 'You missed! go to <a href="/todo">main page</a>'
 
 
 debug(True)
