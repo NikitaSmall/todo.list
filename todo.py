@@ -3,7 +3,7 @@ from sqlite3 import sqlite_version
 __author__ = 'nikitasmall'
 
 import sqlite3
-from bottle import route, run, debug, template, static_file, view, request
+from bottle import route, run, debug, template, static_file, view, request, redirect
 
 
 @route('/js/:filename')
@@ -22,13 +22,18 @@ def css_static(filename):
 
 
 @route('/todo')
-def todo_list():
+@route('/todo/<message>')
+def todo_list(message=''):
+    # message = request.GET.get('message', '').strip()
+
     conn = sqlite3.connect("todo.db")
     c = conn.cursor()
+
     c.execute("SELECT id, task FROM todo WHERE status LIKE '1'")
     result = c.fetchall()
     c.close()
-    output = template('views/todo', rows=result)
+
+    output = template('views/todo', rows=result, message=message)
     return output
 
 
@@ -40,7 +45,7 @@ def new_item():
         conn = sqlite3.connect("todo.db")
         c = conn.cursor()
 
-        query = "INSERT INTO todo (task, status) VALUES ('%s', 1)" %new
+        query = "INSERT INTO todo (task, status) VALUES ('%s', 1)" % new
         c.execute(query)
         conn.commit()
 
@@ -48,9 +53,36 @@ def new_item():
         new_id = c.fetchone()[0]
         c.close()
 
-        return '<p>New task approaching! %s</p>' %new_id
+        return redirect('/todo')
     else:
         return template('new_task.tpl')
+
+
+@route('/edit/<no>', method='GET')
+def edit_item(no):
+    conn = sqlite3.connect("todo.db")
+    c = conn.cursor()
+
+    if request.GET.get('save', '').strip():
+        edit = request.GET.get('task', '').strip()
+        status = request.GET.get('status', '').strip()
+
+        # if status == 'open':
+        #    status = 1
+        # else:
+        #    status = 0
+
+        query = "UPDATE todo set task = '%s', status = '%s' WHERE id=%s" % (edit, status, no)
+        c.execute(query)
+        conn.commit()
+
+        return redirect('/todo')
+    else:
+        query = "SELECT task, status FROM todo WHERE id like '%s'" % no
+        c.execute(query)
+        data = c.fetchone()
+
+        return template('edit_task.tpl', data=data, no=no)
 
 
 debug(True)

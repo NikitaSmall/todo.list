@@ -20,21 +20,20 @@
   <div class="container">
     <div class="row">
         <h2>Задачки от Бутылки для Никитки!</h2>
-        <div class="text-warning">
-            %if message == 'added':
-                Новое задание добавлено!
-            %end
+        <p class="text-right">Никитка, редактируй хорошо! Тебе это ещё выполнять.</p>
+        <form action="/edit/{{no}}" method="GET">
+            <div class="form-group">
 
-        </div>
-        <p class="text-right">Никитка, перед тобой список твоих задач. Ты должен выполнить их!</p>
-        <table class="table table-striped">
-        %for row in rows:
-          <tr>
-            <td>{{row[0]}}</td>
-              <td>{{row[1]}}</td>
-          </tr>
-        %end
-        </table>
+                <input type="text" size="255" maxlength="255" name="task" class="form-control" value="{{data[0]}}">
+            </div>
+            <div class="form-group">
+                <select name="status" class="form-control">
+                    <option value="1">Открыто</option>
+                    <option value="0">Закрыто</option>
+                </select>
+            </div>
+            <input type="submit" name="save" value="Сохранить!" class="btn btn-default">
+        </form>
     </div>
   </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
