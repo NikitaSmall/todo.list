@@ -84,6 +84,18 @@ def edit_item(no):
 
         return template('edit_task.tpl', data=data, no=no)
 
+@route('/delete/:no', method='GET')
+def delete_item(no):
+    conn = sqlite3.connect("todo.db")
+    c = conn.cursor()
+
+    query = "DELETE FROM todo WHERE id=%s" %no
+    c.execute(query)
+    conn.commit()
+
+    return redirect('/todo')
+
+
 @error(403)
 def mistake(code):
     return 'something bad happened! go to <a href="/todo">main page</a>'
