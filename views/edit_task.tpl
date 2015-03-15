@@ -21,7 +21,7 @@
     <div class="row">
         <h2>Задачки от Бутылки для Никитки!</h2>
         <p class="text-right">Никитка, редактируй хорошо! Тебе это ещё выполнять.</p>
-        <form action="/edit/{{no}}" method="GET">
+        <form action="/edit/{{no}}" method="POST">
             <div class="form-group">
 
                 <input type="text" size="255" maxlength="255" name="task" class="form-control" value="{{data[0]}}">

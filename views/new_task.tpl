@@ -21,7 +21,7 @@
     <div class="row">
         <h2>Задачки от Бутылки для Никитки!</h2>
         <p class="text-right">Никитка, наполни список своими задачами! Ты будешь их выполнять. Это же круто!</p>
-        <form action="/new" method="GET">
+        <form action="/new" method="POST">
             <div class="form-group">
                 <input type="text" size="255" maxlength="255" name="task" class="form-control">
 

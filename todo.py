@@ -42,9 +42,10 @@ def todo_list(message=''):
 
 
 @route('/new', method='GET')
+@route('/new', method='POST')
 def new_item():
-    if request.GET.get('task', '').strip():
-        new = request.GET.get('task', '').strip()
+    if request.POST.get('task', '').strip():
+        new = request.POST.get('task', '').strip()
 
         conn = sqlite3.connect("todo.db")
         c = conn.cursor()
@@ -63,13 +64,14 @@ def new_item():
 
 
 @route('/edit/<no>', method='GET')
+@route('/edit/<no>', method='POST')
 def edit_item(no):
     conn = sqlite3.connect("todo.db")
     c = conn.cursor()
 
-    if request.GET.get('save', '').strip():
-        edit = request.GET.get('task', '').strip()
-        status = request.GET.get('status', '').strip()
+    if request.POST.get('save', '').strip():
+        edit = request.POST.get('task', '').strip()
+        status = request.POST.get('status', '').strip()
 
         # if status == 'open':
         #    status = 1
@@ -88,6 +90,7 @@ def edit_item(no):
 
         return template('edit_task.tpl', data=data, no=no)
 
+@route('/delete/:no', method='DELETE')
 @route('/delete/:no', method='GET')
 def delete_item(no):
     conn = sqlite3.connect("todo.db")

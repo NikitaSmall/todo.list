@@ -37,7 +37,14 @@
                     /> </td>
               <td>{{row[1]}}</td>
               <td class="text-right"><a href="/edit/{{row[0]}}" class="btn btn-info"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
-              <td class="text-right"><a href="/delete/{{row[0]}}" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+              <td class="text-right">
+                  <form method="DELETE" action="/delete/{{row[0]}}">
+                      <button type="submit" class="btn btn-danger">
+                          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                      </button>
+                  </form>
+                  <!--<a href="/delete/{{row[0]}}" class="btn btn-danger"></a>-->
+              </td>
           </tr>
         %end
         </table>
