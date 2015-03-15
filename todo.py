@@ -102,6 +102,20 @@ def delete_item(no):
 
     return redirect('/todo')
 
+@route('/checked', method='GET')
+def check():
+    conn = sqlite3.connect("todo.db")
+    c = conn.cursor()
+
+    id = request.GET.get('id', '').strip()
+    isChecked = request.GET.get('isChecked', '').strip()
+
+    query = "UPDATE todo SET status=%s WHERE id=%s" % (isChecked, id)
+    c.execute(query)
+    conn.commit()
+
+    return str(isChecked)
+
 
 @error(403)
 def mistake(code):
