@@ -28,8 +28,16 @@
             </div>
             <div class="form-group">
                 <select name="status" class="form-control">
-                    <option value="1">Открыто</option>
-                    <option value="0">Закрыто</option>
+                    <option value="1"
+                            %if data[1] == 1:
+                            selected
+                            %end
+                            >Открыто</option>
+                    <option value="0"
+                            %if data[1] == 0:
+                            selected
+                            %end
+                            >Закрыто</option>
                 </select>
             </div>
             <input type="submit" name="save" value="Изменить!" class="btn btn-default">

@@ -30,7 +30,11 @@
         <table class="table table-striped">
         %for row in rows:
           <tr>
-            <td>{{row[0]}}</td>
+            <td><input type="checkbox" name="task[{{row[0]}}]" value="1"
+                    %if row[2] == 0:
+                        checked
+                    %end
+                    /> </td>
               <td>{{row[1]}}</td>
               <td class="text-right"><a href="/edit/{{row[0]}}" class="btn btn-info"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
               <td class="text-right"><a href="/delete/{{row[0]}}" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>

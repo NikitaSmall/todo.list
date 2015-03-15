@@ -33,7 +33,7 @@ def todo_list(message=''):
     conn = sqlite3.connect("todo.db")
     c = conn.cursor()
 
-    c.execute("SELECT id, task FROM todo WHERE status LIKE '1'")
+    c.execute("SELECT id, task, status FROM todo ORDER BY status DESC")
     result = c.fetchall()
     c.close()
 
