@@ -32,8 +32,8 @@
           <tr>
             <td>{{row[0]}}</td>
               <td>{{row[1]}}</td>
-              <td class="text-right"><a href="/edit/{{row[0]}}" class="btn btn-info"><span class="glyphicon glyphicon-scissors" aria-hidden="true"></span></a></td>
-              <td class="text-right"><a href="/delete/{{row[0]}}" class="btn btn-danger"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a></td>
+              <td class="text-right"><a href="/edit/{{row[0]}}" class="btn btn-info"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
+              <td class="text-right"><a href="/delete/{{row[0]}}" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
           </tr>
         %end
         </table>

@@ -15,6 +15,10 @@ def js_static(filename):
 def img_static(filename):
     return static_file(filename, root='./views/img')
 
+@route('/fonts/:filename')
+def img_static(filename):
+    return static_file(filename, root='./views/fonts')
+
 
 @route('/css/:filename')
 def css_static(filename):
