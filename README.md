@@ -7,6 +7,7 @@ Study web-app for my python and bottle knowledge.
 1. Basic CRUD;
 2. bootstrap for good ui;
 3. ajax checkboxes (yes, just one click to finish task!);
+4. Pretty checkboxes;
 
 ### What is in plans:
 
