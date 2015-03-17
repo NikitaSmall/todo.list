@@ -8,6 +8,7 @@
 
     <!-- Bootstrap -->
     <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+      <link href="/css/style.css" rel="stylesheet" media="screen">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -31,14 +32,19 @@
             <table class="table table-striped">
             %for row in rows:
               <tr>
-                <td><input type="checkbox" name="{{row[0]}}" id="task" value="1"
+                <td>
+                    <div class="squaredOne">
+                    <input type="checkbox" name="{{row[0]}}" id="squaredOne{{row[0]}} task" value="1"
                         %if row[2] == 0:
                             checked
                         %end
-                        /> </td>
-                  <td>{{row[1]}}</td>
-                  <td class="text-right"><a href="/edit/{{row[0]}}" class="btn btn-info"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
-                  <td class="text-right">
+                        />
+                        <label for="squaredOne{{row[0]}} task"></label>
+                    </div>
+                </td>
+                  <td style="vertical-align: middle;">{{row[1]}}</td>
+                  <td style="vertical-align: middle;" class="text-right"><a href="/edit/{{row[0]}}" class="btn btn-info"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
+                  <td style="vertical-align: middle;" class="text-right">
                       <form method="DELETE" action="/delete/{{row[0]}}">
                           <button type="submit" class="btn btn-danger">
                               <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
